@@ -33,6 +33,11 @@ var estoque = new List<Produto>()
 
 // 1 -Liste todos os produtos do estoque, do mais barato ao mais caro.
 
+public void ProdutosValor(estoque listaProduto)
+{
+    var query = .
+}
+
 
 // 2 - Liste os produtos por ordem alfabética.
 

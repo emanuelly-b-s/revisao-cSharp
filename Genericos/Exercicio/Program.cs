@@ -2,17 +2,13 @@
 
 Stack<int> teste = new Stack<int>();
 
-
 teste.Push(1);
 teste.Push(2);
-teste.Pop();
 
 
-Console.WriteLine(teste);
 
 public class Stack<T>
 {
-
     private T[] pilha = new T[10];
     private int topo = -1;
 
@@ -46,7 +42,6 @@ public class Stack<T>
         {
             pilha[i] = default(T);
         }
-
         topo = -1;
     }
 
@@ -55,9 +50,8 @@ public class Stack<T>
         string result = "";
         for (int i = topo; i < 0; i--)
         {
-            result +=$"{i}" + "[{pilha[i]}]";
+            result += $"{i}" + $"{pilha[i]}";
         }
         return result;
     }
-
 }
