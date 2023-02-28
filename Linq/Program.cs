@@ -1,42 +1,28 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
+using System.Linq;
+using static System.Console;
 
-var estoque = new List<Produto>()
+Estoque estoque = new Estoque();
+
+Pesquisa.ValoresOrdenados(estoque);
+WriteLine();
+public class Pesquisa
 {
-    new Produto("Arroz", 10.0, new DateTime(2023, 12, 31)),
-    new Produto("Feijão", 8.0, new DateTime(2023, 6, 30)),
-    new Produto("Azeite", 20.0, new DateTime(2025, 2, 28)),
-    new Produto("Sal", 2.0, new DateTime(2024, 10, 31)),
-    new Produto("Açúcar", 5.0, new DateTime(2023, 8, 31)),
-    new Produto("Café", 7.5, new DateTime(2022, 12, 31)),
-    new Produto("Leite", 3.5, new DateTime(2023, 4, 30)),
-    new Produto("Pão", 4.0, new DateTime(2022, 11, 30)),
-    new Produto("Queijo", 15.0, new DateTime(2022, 10, 31)),
-    new Produto("Presunto", 12.0, new DateTime(2022, 11, 30)),
-    new Produto("Manteiga", 8.5, new DateTime(2023, 1, 31)),
-    new Produto("Achocolatado", 6.0, new DateTime(2024, 5, 31)),
-    new Produto("Refrigerante", 4.5, new DateTime(2023, 7, 31)),
-    new Produto("Suco", 3.5, new DateTime(2023, 3, 31)),
-    new Produto("Água", 2.0, new DateTime(2024, 2, 29)),
-    new Produto("Carne", 25.0, new DateTime(2023, 2, 28)),
-    new Produto("Frango", 15.0, new DateTime(2023, 1, 31)),
-    new Produto("Peixe", 20.0, new DateTime(2022, 12, 31)),
-    new Produto("Batata", 2.5, new DateTime(2022, 10, 31)),
-    new Produto("Cebola", 3.0, new DateTime(2023, 3, 31)),
-    new Produto("Alho", 2.0, new DateTime(2022, 11, 30)),
-    new Produto("Tomate", 3.5, new DateTime(2023, 1, 28)),
-    new Produto("Cenoura", 2.5, new DateTime(2023, 1, 31)),
-    new Produto("Abóbora", 4.0, new DateTime(2024, 4, 30)),
-    new Produto("Beterraba", 2.5, new DateTime(2023, 2, 19))
-};
+    public static void ValoresOrdenados(Estoque listP)
+    {
+        Console.WriteLine("Produtos ordenados pelo valor\n");
+        var listOrd = listP.ListaProdutos.OrderBy(p => p.Valor).ToList();
+
+        foreach (var item in listOrd)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
 
 
 // 1 -Liste todos os produtos do estoque, do mais barato ao mais caro.
-
-public void ProdutosValor(estoque listaProduto)
-{
-    var query = .
-}
 
 
 // 2 - Liste os produtos por ordem alfabética.
@@ -60,25 +46,3 @@ public void ProdutosValor(estoque listaProduto)
 
 // 7 - Assim como no exercício 6, implemente agora uma função que pegue todos os valores menores que o valor máximo
 // Ex: getByMaxValue(List<estoque> estoque, double maxValue)
-
-
-
-
-public class Produto
-{
-    public string Nome { get; set; }
-    public double Valor { get; set; }
-
-    public DateTime DataValidade { get; set; }
-
-    public Produto(string nome, double valor, DateTime validade)
-    {
-        Nome = nome;
-        Valor = valor;
-    }
-
-    public override string ToString()
-    {
-        return Nome + " - R$ " + Valor;
-    }
-}
