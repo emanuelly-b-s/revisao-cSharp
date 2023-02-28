@@ -7,8 +7,12 @@ Estoque estoque = new Estoque();
 
 Pesquisa.ValoresOrdenados(estoque);
 WriteLine();
+Pesquisa.NomesOrdenados(estoque);
+WriteLine();
 public class Pesquisa
 {
+
+    // 1 -Liste todos os produtos do estoque, do mais barato ao mais caro.
     public static void ValoresOrdenados(Estoque listP)
     {
         Console.WriteLine("Produtos ordenados pelo valor\n");
@@ -19,13 +23,22 @@ public class Pesquisa
             Console.WriteLine(item);
         }
     }
+
+    // 2 - Liste os produtos por ordem alfabética.
+    public static void NomesOrdenados(Estoque listP)
+    {
+        Console.WriteLine("Produtos ordenados por ordem alfabetica\n");
+        var listOrd = listP.ListaProdutos.OrderBy(p => p.Nome).ToList();
+
+        foreach (var item in listOrd)
+        {
+            Console.WriteLine(item);
+        }
+    }
 }
 
 
-// 1 -Liste todos os produtos do estoque, do mais barato ao mais caro.
 
-
-// 2 - Liste os produtos por ordem alfabética.
 
 
 // 3 - Encontre a média de preço dos produtos, mostre a média, e todos os produtos com o preço acima dela
