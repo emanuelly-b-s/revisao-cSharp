@@ -9,6 +9,8 @@ Pesquisa.ValoresOrdenados(estoque);
 WriteLine();
 Pesquisa.NomesOrdenados(estoque);
 WriteLine();
+Pesquisa.ValorMedio(estoque);
+WriteLine();
 public class Pesquisa
 {
 
@@ -35,13 +37,19 @@ public class Pesquisa
             Console.WriteLine(item);
         }
     }
+    // 3 - Encontre a média de preço dos produtos, mostre a média, e todos os produtos com o preço acima dela
+    public static void ValorMedio(Estoque list)
+    {
+        var mediaV = list.ListaProdutos.Average(p => p.Valor);
+
+        Console.WriteLine(mediaV);
+    }
 }
 
 
 
 
 
-// 3 - Encontre a média de preço dos produtos, mostre a média, e todos os produtos com o preço acima dela
 
 
 // 4 - Liste os produtos vencidos
