@@ -1,57 +1,79 @@
-﻿using System.Collections.Generic;
+﻿PilhaGenerica<int> pilha = new PilhaGenerica<int>();
 
-Stack<int> teste = new Stack<int>();
+pilha.Empilhar(32);
+pilha.Empilhar(20);
+pilha.Empilhar(17);
+pilha.Empilhar(5);
+pilha.Empilhar(23);
+pilha.Empilhar(340);
+pilha.Empilhar(74);
+pilha.Empilhar(7);
 
-teste.Push(1);
-teste.Push(2);
+// Imprime o tamanho da pilha
+Console.WriteLine("Tamanho da pilha: " + pilha.Tamanho());
 
+// Imprime o item no topo da pilha
+Console.WriteLine("Item no topo da pilha: " + pilha.Topo());
 
+// Desempilha um item e o imprime
+int itemDesempilhado = pilha.Desempilhar();
+Console.WriteLine("Item desempilhado: " + itemDesempilhado);
 
-public class Stack<T>
+// Imprime o tamanho da pilha novamente
+Console.WriteLine("Tamanho da pilha: " + pilha.Tamanho());
+
+// Limpa a pilha e verifica se está vazia
+pilha.Limpar();
+Console.WriteLine("A pilha está vazia? " + pilha.Vazia());
+
+public class PilhaGenerica<T>
 {
-    private T[] pilha = new T[10];
-    private int topo = -1;
+    private List<T> itens;
 
-    public void Push(T item)
+    public PilhaGenerica()
     {
-        topo++;
-        pilha[topo] = item;
+        itens = new List<T>();
     }
 
-    public void Pop()
+    public void Empilhar(T item)
     {
-        if (topo < 0)
-            return;
-        pilha[topo] = default(T);
-        topo--;
+        itens.Add(item);
     }
 
-    public bool isEmpty()
+    public T Desempilhar()
     {
-        return topo < 0;
-    }
-
-    public int Size()
-    {
-        return topo + 1;
-    }
-
-    void Clear()
-    {
-        for (int i = 0; i < pilha.Count(); i++)
+        if (itens.Count == 0)
         {
-            pilha[i] = default(T);
+            throw new InvalidOperationException("A pilha está vazia.");
         }
-        topo = -1;
+
+        T item = itens[itens.Count - 1];
+        itens.RemoveAt(itens.Count - 1);
+        return item;
     }
 
-    public override string ToString()
+    public T Topo()
     {
-        string result = "";
-        for (int i = topo; i < 0; i--)
+        if (itens.Count == 0)
         {
-            result += $"{i}" + $"{pilha[i]}";
+            throw new InvalidOperationException("A pilha está vazia.");
         }
-        return result;
+
+        return itens[itens.Count - 1];
+    }
+
+    public int Tamanho()
+    {
+        return itens.Count;
+    }
+
+    public void Limpar()
+    {
+        itens.Clear();
+    }
+
+    public bool Vazia()
+    {
+        return itens.Count == 0;
     }
 }
